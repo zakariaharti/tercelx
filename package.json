@@ -1,0 +1,21 @@
+{
+  "name": "tercelql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zakariaharti/tercelql.git",
+  "author": "zakariaharti <zakariya.developer@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "css-loader": "^2.0.2",
+    "file-loader": "^3.0.1",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "tslint": "^5.12.0",
+    "tslint-loader": "^3.5.4",
+    "typescript": "^3.2.2",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2"
+  }
+}
