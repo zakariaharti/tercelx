@@ -26,6 +26,8 @@ const config: webpack.Configuration = merge(common,{
           {
             loader: 'css-loader',
             options: {
+              modules: true,
+              importLoaders: 1,
               localIdentName: "[local]-[hash:base64]",
               minimize: false,
               sourceMap: true,
@@ -40,13 +42,17 @@ const config: webpack.Configuration = merge(common,{
         ]
       },
       {
-        test: /\.s(c|a)ss$i/,
+        test: /\.scss|sass|css$i/,
         use: [
           'css-hot-loader',
           MiniCssExtractPlugin.loader,
           {
-            loader: 'sass-loader',
+            loader: 'css-loader',
             options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: "[local]-[hash:base64]",
+              minimize: false,
               sourceMap: true,
             }
           },
@@ -56,6 +62,12 @@ const config: webpack.Configuration = merge(common,{
               sourceMap: true,
             }
           },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            }
+          }
         ]
       },
       {
@@ -64,8 +76,12 @@ const config: webpack.Configuration = merge(common,{
           'css-hot-loader',
           MiniCssExtractPlugin.loader,
           {
-            loader: 'less-loader',
+            loader: 'css-loader',
             options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: "[local]-[hash:base64]",
+              minimize: false,
               sourceMap: true,
             }
           },
@@ -74,7 +90,13 @@ const config: webpack.Configuration = merge(common,{
             options: {
               sourceMap: true,
             }
-          }
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: true,
+            }
+          },
         ]
       },
       {
