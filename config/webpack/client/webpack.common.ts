@@ -4,6 +4,15 @@ const config: webpack.Configuration = {
   module: {
     rules: [
       {
+        test: /\.ts$/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: 'tslint-loader',
+          }
+        ]
+      },
+      {
         test: /\.(j|t)sx?$i/,
         exclude: /node_modules/,
         use: [
