@@ -1,6 +1,6 @@
-import * as webpack from 'webpack';
+const webpack = require('webpack');
 
-const config: webpack.Configuration = {
+const config = {
   module: {
     rules: [
       {

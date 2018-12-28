@@ -1,20 +1,19 @@
-import * as webpack from 'webpack';
-import * as merge from 'webpack-merge';
-import * as path from 'path';
-import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import * as CompressionPlugin from 'compression-webpack-plugin';
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-import common from "./webpack.common";
+const common = require('./webpack.common');
 
-const config: webpack.Configuration = merge(common,{
-  mode: 'production',
-  devtool: "source-map",
+const config = merge(common,{
+  mode: 'development',
+  devtool: "inline-source-map",
   entry: [
     path.resolve(__dirname,'..','..','client','index.tsx')
   ],
   output: {
-    chunkFilename: "assets/js/[name].[chunkhash].js",
-    filename: "assets/js/[name].[chunkhash].js",
+    chunkFilename: 'client.bundle.js',
+    filename: 'client.bundle.js',
     path: path.resolve(__dirname,'..','..','build','public')
   },
   module: {
@@ -106,7 +105,7 @@ const config: webpack.Configuration = merge(common,{
          {
            loader: "file-loader",
            options: {
-             name: `assets/img/[name].[hash].[ext]`,
+             name: `assets/img/[name].[ext]`,
            },
          },
        ],
@@ -117,7 +116,7 @@ const config: webpack.Configuration = merge(common,{
           {
             loader: "file-loader",
             query: {
-              name: `assets/fonts/[name].[hash].[ext]`,
+              name: `assets/fonts/[name].[ext]`,
             },
           },
         ],
@@ -145,11 +144,7 @@ const config: webpack.Configuration = merge(common,{
   plugins: [
     new MiniCssExtractPlugin({
       chunkFilename: "assets/css/[id].css",
-      filename: "assets/css/[name].[contenthash].css",
-    }),
-    new CompressionPlugin({
-      cache: true,
-      minRatio: 0.99,
+      filename: "assets/css/[name].css",
     }),
   ]
 });
