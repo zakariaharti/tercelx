@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 const config = {
   module: {
@@ -45,7 +46,7 @@ const config = {
   },
   resolve: {
      alias: {
-       "@cl": path.resolve(__dirname,'..','..', "client"),
+       "@sv": path.resolve(__dirname,'..','..', "server"),
      },
      extensions: [".mjs", ".ts", ".tsx", ".jsx", ".js", ".json"],
      modules: [
