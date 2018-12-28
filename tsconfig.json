@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "allowUnusedLabels": true,
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "declaration": false,
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "es2015",
+      "esnext"
+    ],
+    "module": "commonjs",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "dist/ts",
+    "paths": {
+      "@sc/*": [
+        "src/server/*"
+      ],
+      "@cl/*": [
+        "src/client/*"
+      ]
+    },
+    "removeComments": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2017",
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "__tests__"
+  ]
+}
