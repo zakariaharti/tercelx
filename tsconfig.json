@@ -13,6 +13,7 @@
     ],
     "module": "commonjs",
     "noUnusedLocals": true,
+    "noImplicitThis": false,
     "noUnusedParameters": true,
     "outDir": "dist/ts",
     "paths": {
