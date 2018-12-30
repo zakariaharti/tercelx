@@ -6,3 +6,5 @@ const app = express.Router();
 
 app.post('/signup', signup);
 app.post('/login', passportConfig.requireLogin, login);
+
+export default app;

@@ -6,15 +6,16 @@ import * as helmet from 'helmet';
 import * as lusca from 'lusca';
 import * as passport from 'passport';
 import * as cookieParser from 'cookie-parser';
-// import * as multer from 'multer';
 import * as session from 'express-session';
 import * as bodyParser from 'body-parser';
 import * as compression from 'compression';
- //import * as path from 'path';
 import * as dotenv from 'dotenv';
 import * as mongoose from 'mongoose';
 import * as chalk from 'chalk';
 import * as errorHandler from 'errorhandler';
+import * as authRouter from './routes/authRouter';
+// import * as multer from 'multer';
+//import * as path from 'path';
 // mongodb store for sessions
 const MongoStore = require('connect-mongo')(session);
 
@@ -24,7 +25,7 @@ const MongoStore = require('connect-mongo')(session);
 /**
  * loading environment variables where api keys and other options is configured
  */
- dotenv.config();
+ dotenv.load();
 
  /**
   * create express server instance
@@ -68,13 +69,19 @@ app.use(session({
   })
 }));
 app.use(passport.initialize());
-app.use(passport.session());
 app.use(lusca.csrf());
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
 app.use(helmet());
 app.use(cors());
 app.use(cookieParser());
+
+/**
+ * authentication routes
+ */
+
+// @ts-ignore
+app.use('/api', authRouter);
 
 /**
  * Error Handler.
