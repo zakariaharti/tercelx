@@ -2,6 +2,8 @@ import * as bcrypt from 'bcrypt-nodejs';
 import * as mongoose from 'mongoose';
 import * as crypto from 'crypto';
 
+import { comparePasswordFunction, IUser } from '../types/models/user';
+
 /**
  * user document schema
  */
@@ -11,7 +13,12 @@ const userSchema = new mongoose.Schema({
     unique: true,
     type: String
   },
-  password: String
+  password: String,
+  auth: {
+    token: String,
+    used: Boolean,
+    exipredIn: Date
+  }
 },{ timestamps: true });
 
 /**
@@ -32,22 +39,26 @@ userSchema.pre('save',function (next: mongoose.HookNextFunction) {
         return next(err);
       }
       user.password = hash;
+      user.auth = {
+        token: salt,
+        used: true,
+        expiredIn: 3600*60*60*24*30
+      }
       next();
     });
   });
 });
 
-/**
- * compare user passwords
- */
-userSchema.methods.comparePassword = function comparePassword(
-  password: string,
-  cb: (err: Error, isMatch: boolean) => void
-) {
+const comparePassword: comparePasswordFunction = function comparePassword(password ,cb) {
   bcrypt.compare(password, this.password, (err, isMatch) => {
     cb(err, isMatch);
   });
 };
+
+/**
+ * compare user passwords
+ */
+userSchema.methods.comparePassword = comparePassword;
 
 /**
  * Helper method for getting user's gravatar.
@@ -63,6 +74,6 @@ userSchema.methods.gravatar = function gravatar(size: number = 200) {
 /**
  * User model
  */
-const User = mongoose.model('User',userSchema);
+const User = mongoose.model<IUser>('User',userSchema);
 
 export default User;
