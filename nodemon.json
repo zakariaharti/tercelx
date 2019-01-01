@@ -1,5 +1,8 @@
 {
-  "watch": ["server"],
+  "watch": [
+    ".",
+    "server"
+  ],
   "ext": "ts",
   "ignore": ["*.test.ts"],
   "delay": "3",

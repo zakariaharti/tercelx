@@ -5,6 +5,18 @@
   "repository": "https://github.com/zakariaharti/tercelql.git",
   "author": "zakariaharti <zakariya.developer@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test PORT=8080 jest",
+    "test:watch": "npm run test --watchAll",
+    "test:coverage": "npm run test --coverage",
+    "start": "cross-env NODE_ENV=development nodemon index.ts",
+    "start:prod": "cross-env NODE_ENV=production ts-node index.ts",
+    "bs": "npm run clean && npm run build && npm run build:server && npm run start:prod",
+    "lint": "tslint -e node_modules",
+    "clean": "rimraf build",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.client.prod.js",
+    "build:server": "cross-env NODE_ENV=production webpack --config webpack.server.js",
+  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-syntax-decorators": "^7.2.0",
