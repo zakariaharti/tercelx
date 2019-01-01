@@ -3,19 +3,21 @@ const merge = require('webpack-merge');
 const path = require('path');
 const CompressionPlugin = require('mini-css-extract-plugin');
 const MiniCssExtractPlugin = require('compression-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 
 const common = require('./webpack.common');
 
 const config = merge(common,{
   mode: 'production',
-  devtool: "source-map",
+  devtool: "hidden-source-map",
   entry: [
-    path.resolve(__dirname,'..','..','client','index.tsx')
+    path.resolve(__dirname,'client','index.tsx')
   ],
   output: {
     chunkFilename: "assets/js/[name].[chunkhash].js",
     filename: "assets/js/[name].[chunkhash].js",
-    path: path.resolve(__dirname,'..','..','build','public')
+    path: path.resolve(__dirname,'build','public')
   },
   module: {
     rules: [
@@ -150,6 +152,18 @@ const config = merge(common,{
     new CompressionPlugin({
       cache: true,
       minRatio: 0.99,
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production'),
+      }
+    }),
+    new ManifestPlugin({
+      basePath: '/',
+    }),
+    new ChunkManifestPlugin({
+      filename: "chunk-manifest.json",
+      manifestVariable: "webpackManifest",
     }),
   ]
 });

@@ -9,12 +9,15 @@ const config = merge(common,{
   mode: 'development',
   devtool: "inline-source-map",
   entry: [
-    path.resolve(__dirname,'..','..','client','index.tsx')
+    'webpack-hot-middleware/client',
+    'webpack/hot/only-dev-server',
+    'react-hot-loader/patch',
+    path.resolve(__dirname,'client','index.tsx')
   ],
   output: {
     chunkFilename: 'client.bundle.js',
     filename: 'client.bundle.js',
-    path: path.resolve(__dirname,'..','..','build','public')
+    path: path.resolve(__dirname,'build','public')
   },
   module: {
     rules: [
@@ -145,6 +148,11 @@ const config = merge(common,{
     new MiniCssExtractPlugin({
       chunkFilename: "assets/css/[id].css",
       filename: "assets/css/[name].css",
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development'),
+      }
     }),
   ]
 });

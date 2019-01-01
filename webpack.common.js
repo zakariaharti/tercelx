@@ -44,12 +44,9 @@ const config = {
     publicPath: '/'
   },
   resolve: {
-     alias: {
-       "@cl": path.resolve(__dirname,'..','..', "client"),
-     },
      extensions: [".mjs", ".ts", ".tsx", ".jsx", ".js", ".json"],
      modules: [
-       path.resolve(__dirname,'..','..', "node_modules"),
+       path.resolve(__dirname,"node_modules"),
      ],
    },
 };

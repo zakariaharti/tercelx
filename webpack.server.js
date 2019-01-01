@@ -10,12 +10,12 @@ const config = merge(common,{
   mode: 'production',
   devtool: "source-map",
   entry: [
-    path.resolve(__dirname,'..','..','server','index.tsx')
+    path.resolve(__dirname,'server','index.tsx')
   ],
   output: {
-    filename: "../server.js",
+    filename: "server.js",
     libraryTarget: "commonjs2",
-    path: path.resolve(__dirname, "..", "..", "build", "public"),
+    path: path.resolve(__dirname, "build", "public"),
     publicPath: "/",
   },
   externals: nodeModules(),
@@ -127,6 +127,10 @@ const config = merge(common,{
     ]
   },
   target: "node",
+  node: {
+    __filename: true,
+    __dirname: true,
+  },
   plugins: [
     new MiniCssExtractPlugin({
       chunkFilename: "assets/css/[id].css",
