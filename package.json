@@ -58,6 +58,7 @@
     "cookie-parser": "^1.4.3",
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
     "css-hot-loader": "^1.4.3",
     "css-loader": "^2.0.2",
     "cssnano": "^4.1.8",
