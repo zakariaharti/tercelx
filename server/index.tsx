@@ -13,7 +13,11 @@ import * as dotenv from 'dotenv';
 import * as mongoose from 'mongoose';
 import * as chalk from 'chalk';
 import * as errorHandler from 'errorhandler';
-import * as authRouter from './routes/authRouter';
+//import * as authRouter from './routes/authRouter';
+
+import { login, signup } from './controllers/authController';
+import { body } from 'express-validator/check';
+import * as passportConfig from './../config/passport';
 // import * as multer from 'multer';
 //import * as path from 'path';
 // mongodb store for sessions
@@ -107,8 +111,27 @@ app.use(cookieParser());
  * authentication routes
  */
 
+ app.post('/signup',[
+   body('email')
+    .not().isEmpty()
+    .isEmail()
+    .normalizeEmail(),
+   body('name')
+    .not().isEmpty(),
+   body('password')
+    .not().isEmpty()
+    .matches(/.{4,}/)
+ ], signup);
+
+ app.post('/login',[
+   body('email')
+    .not().isEmpty(),
+   body('password')
+    .not().isEmpty()
+ ] ,passportConfig.requireLogin, login);
+
 // @ts-ignore
-app.use('/api', authRouter);
+ app.get('/',(req,res) => res.end('hello world'));
 
 /**
  * Error Handler.

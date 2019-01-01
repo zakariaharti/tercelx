@@ -16,6 +16,7 @@ app.post('/signup',[
    .not().isEmpty()
    .matches(/.{4,}/)
 ], signup);
+
 app.post('/login',[
   body('email')
    .not().isEmpty(),
