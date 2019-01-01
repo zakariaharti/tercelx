@@ -157,4 +157,4 @@ const config = merge(common,{
   ]
 });
 
-export default config;
+module.exports = config;

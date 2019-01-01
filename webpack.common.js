@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 const config = {
   module: {
@@ -51,4 +52,4 @@ const config = {
    },
 };
 
-export default config;
+module.exports = config;
