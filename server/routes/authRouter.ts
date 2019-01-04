@@ -3,9 +3,9 @@ import { login, signup } from '../controllers/authController';
 import { body } from 'express-validator/check';
 import * as passportConfig from '../../config/passport';
 
-const app = express.Router();
+const authRouter = express.Router();
 
-app.post('/signup',[
+authRouter.post('/signup',[
   body('email')
    .not().isEmpty()
    .isEmail()
@@ -17,11 +17,11 @@ app.post('/signup',[
    .matches(/.{4,}/)
 ], signup);
 
-app.post('/login',[
+authRouter.post('/login',[
   body('email')
    .not().isEmpty(),
   body('password')
    .not().isEmpty()
 ] ,passportConfig.requireLogin, login);
 
-export default app;
+export { authRouter };
