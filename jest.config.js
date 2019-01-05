@@ -13,5 +13,5 @@ module.exports = {
     "json"
   ],
   "coverageDirectory": "coverage",
-  "setupTestFrameworkScriptFile": "<rootDir>setupTests.ts"
+  "setupTestFrameworkScriptFile": "<rootDir>config/jest/setupTests.ts"
 };
