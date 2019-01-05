@@ -14,8 +14,8 @@
     "bs": "npm run clean && npm run build && npm run build:server && npm run start:prod",
     "lint": "tslint -e node_modules",
     "clean": "rimraf build",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.client.prod.js",
-    "build:server": "cross-env NODE_ENV=production webpack --config webpack.server.js"
+    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.client.prod.js",
+    "build:server": "cross-env NODE_ENV=production webpack --config webpack/webpack.server.js"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
