@@ -28,5 +28,5 @@ const App: React.SFC<IApp> = (props) => (
  * use hot reloading in development
  */
 export default (
-  isProdMode ? App : hot(App)(module)
+  isProdMode ? App : hot(module)(App)
 );
