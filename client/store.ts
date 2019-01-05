@@ -3,13 +3,19 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk';
 import createImmutableStateInvariantMiddleware from 'redux-immutable-state-invariant';
 import logger from 'redux-logger';
+import { createBrowserHistory } from 'history';
+import { routerMiddleware } from 'connected-react-router';
 
 import rootReducer from './reducers';
 
-const isProdMode = process.env.NODE_ENV === 'production'
+const isProdMode = process.env.NODE_ENV === 'production';
+const history = createBrowserHistory();
 
 export const configureStore = (preloadedState = {}) => {
-  let middlewareArray = [thunk];
+  let middlewareArray = [
+    thunk,
+    routerMiddleware(history)
+  ];
 
   if(!isProdMode){
     middlewareArray = [
@@ -23,8 +29,9 @@ export const configureStore = (preloadedState = {}) => {
 
    const middlewareEnhancer = applyMiddleware(...middlewareArray);
    const composeEnhancers = composeWithDevTools(middlewareEnhancer);
+   const reducers = rootReducer(history);
 
-   const store = createStore(rootReducer, preloadedState, composeEnhancers);
+   const store = createStore(reducers, preloadedState, composeEnhancers);
 
    // For hot reloading reducers
    // @ts-ignore
