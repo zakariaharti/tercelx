@@ -41,7 +41,7 @@ const isProdMode = process.env.NODE_ENV === 'production' || false;
 if (isDevMode) {
   // Webpack Requirements
   const webpack = require('webpack');
-  const config = require('../webpack.client.dev');
+  const config = require('../webpack/webpack.client.dev');
   const webpackDevMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
   const compiler = webpack(config);
