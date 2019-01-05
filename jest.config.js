@@ -5,7 +5,7 @@ module.exports = {
     "/lib/"
   ],
   testMatch: null,
-  "testRegex": "(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+  "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
   "moduleFileExtensions": [
     "ts",
     "tsx",
