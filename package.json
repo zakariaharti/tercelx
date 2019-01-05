@@ -118,6 +118,11 @@
     "express": "^4.16.4",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-observable": "^1.0.0",
+    "rxjs": "^6.3.3",
     "styled-components": "^4.1.3"
   }
 }
