@@ -15,6 +15,20 @@ import * as chalk from 'chalk';
 import * as errorHandler from 'errorhandler';
 import { authRouter } from './routes/authRouter';
 
+// React and Redux support
+import * as React from 'react';
+import { renderToString } from 'react-dom/server';
+import { configureStore } from '../client/store';
+import { Provider } from 'react-redux';
+import { StaticRouter } from 'react-router-dom';
+import { StyleSheetManager, ServerStyleSheet } from 'styled-components';
+
+// import required data
+import App from '../client/App';
+import * as routes from '../client/routes';
+import { renderer } from './lib/renderer';
+import { fetchComponentDataBeforeRender } from './lib/helpers/fetchComponentsDataBeforeRender';
+
 // import * as multer from 'multer';
 //import * as path from 'path';
 // mongodb store for sessions
@@ -105,6 +119,56 @@ app.use(cookieParser());
  * authentication routes
  */
 app.use('/', authRouter);
+
+/**
+ * server side rendering of React & Redux
+ */
+app.use(async (req, res, next) => {
+  // store intance
+  const store = configureStore();
+
+  // styled-components ssr support
+  const sheet = new ServerStyleSheet();
+
+  // context object
+  let context: any;
+
+  try{
+    const data = await fetchComponentDataBeforeRender(routes, req.path);
+    if(data){
+      data.forEach(result => {
+        if(result){
+          Object.assign(context.data, result);
+        }
+      });
+    }
+    // render React components html markup
+    const initialView = renderToString(
+      <StyleSheetManager sheet={sheet}>
+        <Provider store={store}>
+          <StaticRouter location={req.path} context={context}>
+            <App />
+          </StaticRouter>
+        </Provider>
+      </StyleSheetManager>
+    );
+
+    // store state
+    const finalState = store.getState();
+
+    // final rendered html
+    const html = renderer(initialView, finalState, sheet);
+
+    // send back the response
+    res
+     .set('Content-Type','html')
+     .status(200)
+     .end(html);
+
+  } catch(err) {
+    return next(err);
+  }
+});
 
 /**
  * Error Handler.

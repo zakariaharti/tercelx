@@ -9,16 +9,13 @@ const isProdMode = process.env.NODE_ENV === 'production' || false;
  * @param {string} html
  * @param {object} initialState
  */
-export default (html: string, initialState: any) => {
+export const renderer = (html: string, initialState: any, sheet: ServerStyleSheet) => {
   const helmet = Helmet.renderStatic();
 
   // Import Manifests
   const assetsManifest = process.env.webpackAssets && JSON.parse(process.env.webpackAssets);
   const chunkManifest = process.env.webpackChunkAssets && JSON.parse(process.env.webpackChunkAssets);
   const cssFileName = isProdMode ? 'assets/css/app.css' : assetsManifest['/assets/css/app.css'];
-
-  // make styled-components server rendered
-  const sheet = new ServerStyleSheet();
 
   const htmlMarkup = `
     <!doctype html>

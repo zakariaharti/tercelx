@@ -1,6 +1,5 @@
 import {
-  matchRoutes,
-  RouteConfig
+  matchRoutes
 } from 'react-router-config';
 
 /**
@@ -8,7 +7,7 @@ import {
 * It is used to make sure server side rendered pages wait for APIs to resolve before returning res.end()
 */
 
-export function fetchComponentDataBeforeRender(routes: RouteConfig[],pathname: string) {
+export function fetchComponentDataBeforeRender(routes: any,pathname: string) {
   const matches = matchRoutes(routes, pathname);
   const promises = matches.map(({ route, match }) => {
     // @ts-ignore

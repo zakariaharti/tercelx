@@ -3,6 +3,9 @@
  */
 import * as React from 'react';
 import { hydrate } from 'react-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import App from './App';
 import { configureStore } from './store';
 
@@ -12,6 +15,10 @@ const store = configureStore(window.__INITIAL_STATE__);
 const mountApp = document.getElementById('root');
 
 hydrate(
-  <App store={store} />,
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
   mountApp
 );
