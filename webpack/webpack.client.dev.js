@@ -147,7 +147,7 @@ const config = merge(common,{
   plugins: [
     new MiniCssExtractPlugin({
       chunkFilename: "assets/css/[id].css",
-      filename: "assets/css/[name].css",
+      filename: "assets/css/app.css",
     }),
     new webpack.DefinePlugin({
       'process.env': {

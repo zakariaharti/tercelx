@@ -104,7 +104,6 @@ app.use(cookieParser());
 /**
  * authentication routes
  */
-
 app.use('/', authRouter);
 
 /**

@@ -147,7 +147,7 @@ const config = merge(common,{
   plugins: [
     new MiniCssExtractPlugin({
       chunkFilename: "assets/css/[id].css",
-      filename: "assets/css/[name].[contenthash].css",
+      filename: "assets/css/app.[contenthash].css",
     }),
     new CompressionPlugin({
       cache: true,
