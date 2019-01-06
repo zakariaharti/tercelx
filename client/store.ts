@@ -19,10 +19,9 @@ export const configureStore = (preloadedState = {}) => {
 
   if(!isProdMode){
     middlewareArray = [
-      // @ts-ignore
       createImmutableStateInvariantMiddleware(),
       thunk,
-      // @ts-ignore
+      routerMiddleware(history),
       logger
     ];
   };
