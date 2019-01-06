@@ -159,7 +159,17 @@ app.use(async (req, res, next) => {
     // final rendered html
     const html = renderer(initialView, finalState, sheet);
 
-    // send back the response
+    // if a <Redirect /> is encoutered
+    if(context.url){
+      res.redirect(context.url);
+    }
+
+    // if notFound encoutered
+    if(context.notFound){
+      res.status(404);
+    }
+
+    // else send back the response
     res
      .set('Content-Type','html')
      .status(200)
@@ -196,7 +206,7 @@ if (!isProdMode) {
 app.listen(app.get('port'), () => {
   // @ts-ignore
   console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
-  console.log('  Press CTRL-C to stop\n');
+  console.log('Press CTRL-C to stop\n');
 });
 
 module.exports = app;
