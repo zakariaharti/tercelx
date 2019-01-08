@@ -9,26 +9,26 @@ import { routerMiddleware } from 'connected-react-router';
 import rootReducer from './reducers';
 
 const isProdMode = process.env.NODE_ENV === 'production';
-const history = createBrowserHistory();
+export const historyObj = createBrowserHistory();
 
 export const configureStore = (preloadedState = {}) => {
   let middlewareArray = [
     thunk,
-    routerMiddleware(history)
+    routerMiddleware(historyObj)
   ];
 
   if(!isProdMode){
     middlewareArray = [
       createImmutableStateInvariantMiddleware(),
       thunk,
-      routerMiddleware(history),
+      routerMiddleware(historyObj),
       logger
     ];
   };
 
    const middlewareEnhancer = applyMiddleware(...middlewareArray);
    const composeEnhancers = composeWithDevTools(middlewareEnhancer);
-   const reducers = rootReducer(history);
+   const reducers = rootReducer(historyObj);
 
    const store = createStore(reducers, preloadedState, composeEnhancers);
 
