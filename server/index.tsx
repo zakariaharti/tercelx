@@ -190,10 +190,10 @@ if (!isProdMode) {
   app.use((
     err: express.Errback,
     // @ts-ignore
-    req: express.Request,
+    _req: express.Request,
     res: express.Response,
     // @ts-ignore
-    next: express.NextFunction
+    _next: express.NextFunction
   ) => {
     console.error(err);
     res.status(500).send('Server Error');

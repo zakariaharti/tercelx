@@ -29,7 +29,12 @@ const config = {
                 "@babel/preset-react"
               ],
               plugins: [
-                '@babel/plugin-syntax-decorators',
+                [
+                  '@babel/plugin-syntax-decorators',
+                  {
+                    decoratorsBeforeExport: true
+                  }
+                ],
                 '@babel/plugin-syntax-jsx',
                 'react-hot-loader/babel',
                 [

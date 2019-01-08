@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema({
  * hash user password
  */
 userSchema.pre('save',function (next: mongoose.HookNextFunction) {
+  // @ts-ignore
   const user = this;
   if(!user.isModified('password')){
     return next();
@@ -50,6 +51,7 @@ userSchema.pre('save',function (next: mongoose.HookNextFunction) {
 });
 
 const comparePassword: comparePasswordFunction = function comparePassword(password ,cb) {
+  // @ts-ignore
   bcrypt.compare(password, this.password, (err, isMatch) => {
     cb(err, isMatch);
   });
