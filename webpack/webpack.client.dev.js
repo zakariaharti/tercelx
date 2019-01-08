@@ -11,7 +11,6 @@ const config = merge(common,{
   entry: [
     'webpack-hot-middleware/client',
     'webpack/hot/only-dev-server',
-    'react-hot-loader/patch',
     path.resolve('..','client','index.tsx')
   ],
   output: {
