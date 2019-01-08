@@ -17,13 +17,17 @@ const config = {
         ]
       },
       {
-        test: /\.(j|t)sx?$i/,
+        test: /\.(tsx|ts)$/,
         exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
             options: {
-              casheDirectory: true,
+              cacheDirectory: true,
+              babelrc: false,
+              presets: [
+                "@babel/preset-react"
+              ],
               plugins: [
                 '@babel/plugin-syntax-decorators',
                 '@babel/plugin-syntax-jsx',
@@ -39,9 +43,6 @@ const config = {
           },
           {
             loader: 'awesome-typescript-loader',
-            options: {
-              getCustomTransformers: () => ({ before: [styledComponentsTransformer] })
-            }
           }
         ]
       }
