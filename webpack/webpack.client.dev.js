@@ -9,14 +9,12 @@ const config = merge(common,{
   mode: 'development',
   devtool: "inline-source-map",
   entry: [
-    'webpack-hot-middleware/client',
-    'webpack/hot/only-dev-server',
-    path.resolve('..','client','index.tsx')
+    path.resolve('.','client','index.tsx')
   ],
   output: {
     chunkFilename: 'client.bundle.js',
     filename: 'client.bundle.js',
-    path: path.resolve('..','build','public')
+    path: path.resolve('.','build','public')
   },
   module: {
     rules: [

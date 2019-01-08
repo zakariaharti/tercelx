@@ -12,12 +12,12 @@ const config = merge(common,{
   mode: 'production',
   devtool: "hidden-source-map",
   entry: [
-    path.resolve('..','client','index.tsx')
+    path.resolve('.','client','index.tsx')
   ],
   output: {
     chunkFilename: "assets/js/[name].[chunkhash].js",
     filename: "assets/js/[name].[chunkhash].js",
-    path: path.resolve('..','build','public')
+    path: path.resolve('.','build','public')
   },
   module: {
     rules: [
