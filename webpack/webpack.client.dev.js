@@ -12,12 +12,12 @@ const config = merge(common,{
     'webpack-hot-middleware/client',
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch',
-    path.resolve(__dirname,'client','index.tsx')
+    path.resolve('..','client','index.tsx')
   ],
   output: {
     chunkFilename: 'client.bundle.js',
     filename: 'client.bundle.js',
-    path: path.resolve(__dirname,'build','public')
+    path: path.resolve('..','build','public')
   },
   module: {
     rules: [
