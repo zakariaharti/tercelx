@@ -2,14 +2,13 @@
  * Root Reducer
  */
 import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
-import { History } from 'history';
+/*import { connectRouter } from 'connected-react-router';
+import { History } from 'history';*/
 
 // Import Reducers
 import app from './modules/App/AppReducer';
 
 // Combine all reducers into one root reducer
-export default (history : History) => combineReducers({
-  router: connectRouter(history),
+export default combineReducers({
   appState: app,
 });
