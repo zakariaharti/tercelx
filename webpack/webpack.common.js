@@ -24,7 +24,6 @@ const config = {
               babelrc: false,
               presets: [
                 "@babel/preset-react",
-                "@babel/preset-typescript"
               ],
               plugins: [
                 [
@@ -43,6 +42,9 @@ const config = {
                 ]
               ]
             }
+          },
+          {
+            loader: 'awesome-typescript-loader'
           }
         ]
       }
@@ -53,9 +55,6 @@ const config = {
   },
   resolve: {
      extensions: [".mjs", ".ts", ".tsx", ".jsx", ".js", ".json"],
-     modules: [
-       path.resolve(__dirname,"node_modules"),
-     ],
    },
 };
 
