@@ -22,6 +22,7 @@
     "@babel/plugin-syntax-decorators": "^7.2.0",
     "@babel/plugin-syntax-jsx": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
     "@types/bcrypt-nodejs": "^0.0.30",
     "@types/body-parser": "^1.17.0",
     "@types/chalk": "^2.2.0",
