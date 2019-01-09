@@ -17,7 +17,7 @@ const config = {
         ]
       },
       {
-        test: /\.(tsx|ts)$/,
+        test: /\.(tsx|ts|js|jsx)$/,
         exclude: /node_modules/,
         use: [
           {
