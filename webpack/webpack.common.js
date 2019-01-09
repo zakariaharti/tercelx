@@ -1,8 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
-
-const styledComponentsTransformer = createStyledComponentsTransformer();
 
 const config = {
   module: {
