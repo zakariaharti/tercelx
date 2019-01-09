@@ -26,7 +26,8 @@ const config = {
               cacheDirectory: true,
               babelrc: false,
               presets: [
-                "@babel/preset-react"
+                "@babel/preset-react",
+                "@babel/preset-typescript"
               ],
               plugins: [
                 [
@@ -45,9 +46,6 @@ const config = {
                 ]
               ]
             }
-          },
-          {
-            loader: 'awesome-typescript-loader',
           }
         ]
       }
