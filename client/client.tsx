@@ -8,6 +8,9 @@ import { Provider } from 'react-redux';
 import App from './App';
 import { configureStore } from './store';
 
+// global stylesheet
+import "./main.sass";
+
 // Initialize store
 // @ts-ignore
 const store = configureStore(window.__INITIAL_STATE__);

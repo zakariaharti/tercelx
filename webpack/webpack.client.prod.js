@@ -12,7 +12,7 @@ const config = merge(common,{
   mode: 'production',
   devtool: "hidden-source-map",
   entry: [
-    path.resolve('.','client','index.tsx')
+    path.resolve('.','client','client.tsx')
   ],
   output: {
     chunkFilename: "assets/js/[name].[chunkhash].js",
@@ -22,7 +22,7 @@ const config = merge(common,{
   module: {
     rules: [
       {
-        test: /\.css$i/,
+        test: /\.css$/,
         use: [
           'css-hot-loader',
           MiniCssExtractPlugin.loader,
@@ -32,7 +32,6 @@ const config = merge(common,{
               modules: true,
               importLoaders: 1,
               localIdentName: "[local]-[hash:base64]",
-              minimize: false,
               sourceMap: true,
             }
           },
@@ -45,7 +44,7 @@ const config = merge(common,{
         ]
       },
       {
-        test: /\.scss|sass$i/,
+        test: /\.(scss|sass)$/,
         use: [
           'css-hot-loader',
           MiniCssExtractPlugin.loader,
@@ -55,7 +54,6 @@ const config = merge(common,{
               modules: true,
               importLoaders: 1,
               localIdentName: "[local]-[hash:base64]",
-              minimize: false,
               sourceMap: true,
             }
           },
@@ -74,7 +72,7 @@ const config = merge(common,{
         ]
       },
       {
-        test: /\.less$i/,
+        test: /\.less$/,
         use: [
           'css-hot-loader',
           MiniCssExtractPlugin.loader,
@@ -84,7 +82,6 @@ const config = merge(common,{
               modules: true,
               importLoaders: 1,
               localIdentName: "[local]-[hash:base64]",
-              minimize: false,
               sourceMap: true,
             }
           },
@@ -103,7 +100,7 @@ const config = merge(common,{
         ]
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg)$/,
         use: [
          {
            loader: "file-loader",
@@ -114,7 +111,7 @@ const config = merge(common,{
        ],
      },
      {
-       test: /\.(woff|woff2|(o|t)tf|eot)$/i,
+       test: /\.(woff|woff2|(o|t)tf|eot)$/,
        use: [
           {
             loader: "file-loader",
@@ -137,7 +134,7 @@ const config = merge(common,{
       cacheGroups: {
         styles: {
           name: 'styles',
-          test: /\.(css|s(c|a)ss|less)$i/,
+          test: /\.(css|s(c|a)ss|less)$/,
           chunks: 'all',
           enforce: true
         }

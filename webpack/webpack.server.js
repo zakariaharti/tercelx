@@ -10,7 +10,7 @@ const config = merge(common,{
   mode: 'production',
   devtool: "source-map",
   entry: [
-    path.resolve(__dirname,'server','index.tsx')
+    path.resolve(__dirname,'server','server.tsx')
   ],
   output: {
     filename: "server.js",

@@ -15,7 +15,10 @@ export const renderer = (html: string, initialState: any, sheet: ServerStyleShee
   // Import Manifests
   const assetsManifest = process.env.webpackAssets && JSON.parse(process.env.webpackAssets);
   const chunkManifest = process.env.webpackChunkAssets && JSON.parse(process.env.webpackChunkAssets);
-  const cssFileName = isProdMode ? 'assets/css/app.css' : assetsManifest['/assets/css/app.css'];
+  const assetsFilename = typeof assetsManifest !== 'undefined'
+     ? assetsManifest['/assets/css/app.css']
+     : '/assets/css/app.css';
+  const cssFileName = isProdMode ? 'assets/css/app.css' : assetsFilename;
 
   const htmlMarkup = `
     <!doctype html>
@@ -30,9 +33,7 @@ export const renderer = (html: string, initialState: any, sheet: ServerStyleShee
          <link rel="stylesheet" href="${cssFileName}"></link>
       </head>
       <body ${helmet.bodyAttributes.toString()}>
-        <div id="root">
-           ${isProdMode ? html : `<div>${html}</div>`}
-        </div>
+        <div id="root">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
           ${isProdMode ?

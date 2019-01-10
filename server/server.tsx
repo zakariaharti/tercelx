@@ -131,7 +131,7 @@ app.use(async (req, res, next) => {
   const sheet = new ServerStyleSheet();
 
   // context object
-  let context: any;
+  let context: any = {};
 
   try{
     const data = await fetchComponentDataBeforeRender(routes, req.path);
@@ -171,7 +171,7 @@ app.use(async (req, res, next) => {
 
     // else send back the response
     res
-     .set('Content-Type','html')
+     .set('Content-Type','text/html')
      .status(200)
      .end(html);
 
