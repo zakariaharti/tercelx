@@ -25,7 +25,7 @@ import { StyleSheetManager, ServerStyleSheet } from 'styled-components';
 
 // import required data
 import App from '../client/App';
-import * as routes from '../client/routes';
+import routes from '../client/routes';
 import { renderer } from './lib/renderer';
 import { fetchComponentDataBeforeRender } from './lib/helpers/fetchComponentsDataBeforeRender';
 
@@ -61,7 +61,7 @@ if (isDevMode) {
   const compiler = webpack(config);
 
   app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
+    noInfo: false,
     publicPath: config.output.publicPath,
     watchOptions: {
       poll: 1000,

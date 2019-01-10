@@ -11,7 +11,7 @@ export function fetchComponentDataBeforeRender(routes: any,pathname: string) {
   const matches = matchRoutes(routes, pathname);
   const promises = matches.map(({ route, match }) => {
     // @ts-ignore
-    return route.loadDate ? route.loadDate(match) : Promise.resolve(null);
+    return route.loadData ? route.loadData(match) : Promise.resolve(null);
   });
 
   return Promise.all(promises);
