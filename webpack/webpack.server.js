@@ -139,6 +139,9 @@ const config = merge(common,{
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1,
     }),
+    new webpack.DefinePlugin({
+      'SERVER': JSON.stringify(true)
+    }),
   ]
 });
 

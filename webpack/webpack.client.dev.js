@@ -149,7 +149,8 @@ const config = merge(common,{
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('development'),
-      }
+      },
+      'CLIENT': JSON.stringify(true)
     }),
   ]
 });

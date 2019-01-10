@@ -156,7 +156,8 @@ const config = merge(common,{
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
-      }
+      },
+      'CLIENT': JSON.stringify(true)
     }),
     new ManifestPlugin({
       basePath: '/',
