@@ -15,10 +15,23 @@ import "./main.sass";
 // @ts-ignore
 const store = configureStore(window.__INITIAL_STATE__);
 const mountApp = document.getElementById('root');
-
+alert('mmmmmmmmmmm');
 hydrate(
   <Provider store={store}>
     <App />
   </Provider>,
   mountApp
 );
+
+// For hot reloading of react components
+// @ts-ignore
+/*if (module.hot) {
+  // @ts-ignore
+  module.hot.accept('./App', () => {
+
+    hydrate(
+        <App />,
+      mountApp
+    );
+  });
+}*/

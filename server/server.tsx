@@ -63,9 +63,6 @@ if (isDevMode) {
   app.use(webpackDevMiddleware(compiler, {
     noInfo: false,
     publicPath: config.output.publicPath,
-    watchOptions: {
-      poll: 1000,
-    },
   }));
   app.use(webpackHotMiddleware(compiler));
 }

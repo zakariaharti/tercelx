@@ -16,9 +16,9 @@ export const renderer = (html: string, initialState: any, sheet: ServerStyleShee
   const assetsManifest = process.env.webpackAssets && JSON.parse(process.env.webpackAssets);
   const chunkManifest = process.env.webpackChunkAssets && JSON.parse(process.env.webpackChunkAssets);
   const assetsFilename = typeof assetsManifest !== 'undefined'
-     ? assetsManifest['/assets/css/app.css']
-     : '/assets/css/app.css';
-  const cssFileName = isProdMode ? 'assets/css/app.css' : assetsFilename;
+     ? assetsManifest['/assets/css/styles.css']
+     : '/assets/css/styles.css';
+  const cssFileName = isProdMode ? 'assets/css/styles.css' : assetsFilename;
 
   const htmlMarkup = `
     <!doctype html>
@@ -41,7 +41,7 @@ export const renderer = (html: string, initialState: any, sheet: ServerStyleShee
             window.webpackManifest = ${JSON.stringify(chunkManifest)};
           //]]>` : ''}
         </script>
-        <script src='${isProdMode ? assetsManifest['/client.bundle.js'] : '/client.bundle.js'}'></script>
+        <script src='${isProdMode ? assetsManifest['/main.bundle.js'] : '/main.bundle.js'}'></script>
       </body>
     </html>
   `;

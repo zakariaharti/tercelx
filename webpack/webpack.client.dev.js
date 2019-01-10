@@ -9,7 +9,7 @@ const config = merge(common,{
   mode: 'development',
   devtool: "inline-source-map",
   entry: [
-    path.resolve('.','client','client.tsx')
+     path.resolve('.','client','client.tsx')
   ],
   output: {
     chunkFilename: '[name].bundle.js',
