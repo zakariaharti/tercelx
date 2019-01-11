@@ -1,3 +1,1 @@
-<div align="center>
-   <img src="/background.png" alt="tercelx project" />
-</div>
+![tercelx](/background.png)
