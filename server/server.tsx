@@ -57,13 +57,13 @@ if (isDevMode) {
   const webpack = require('webpack');
   const config = require('../webpack/webpack.client.dev');
   const webpackDevMiddleware = require('webpack-dev-middleware');
-  //const webpackHotMiddleware = require('webpack-hot-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
   const compiler = webpack(config);
 
   app.use(webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
   }));
-  //app.use(webpackHotMiddleware(compiler));
+  app.use(webpackHotMiddleware(compiler));
 }
 
 

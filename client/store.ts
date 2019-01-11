@@ -34,8 +34,7 @@ export const configureStore = (preloadedState = {}) => {
      // Enable Webpack hot module replacement for reducers
      // @ts-ignore
      module.hot.accept('./reducers', () => {
-       const nextReducer = require('./reducers').default;
-       store.replaceReducer(nextReducer(history));
+       store.replaceReducer(rootReducer(history));
      });
    }
 
