@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 const Header: React.SFC<{}> = () => (
-  <div>this is morocco</div>
+  <div>this is uk</div>
 );
 
 export default Header;
