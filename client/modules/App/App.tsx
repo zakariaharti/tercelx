@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 
 import Header from './Components/Header/Header';
+import Welcome from './Components/Welcome';
 
 const App: React.SFC<{}> = (props) => (
   <div>
@@ -14,6 +15,7 @@ const App: React.SFC<{}> = (props) => (
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Helmet>
     <Header />
+    <Welcome />
     <div>
       {props.children}
     </div>
